@@ -219,30 +219,30 @@ aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type
 ```
 
 #### Verification:
-    ```bash
+```bash
     aws ec2 describe-instances \
     --region ap-southeast-1 \
     --query "Reservations[*].Instances[*].[InstanceId, State.Name, PublicIpAddress]" \
     --output table
-    ```
+```
 
 #### Public IP:
-    ```bash
+```bash
     aws ec2 describe-instances \
     --instance-ids i-085ae187d97a893f2 \
     --region ap-southeast-1 \
     --query "Reservations[*].Instances[*].PublicIpAddress" \
     --output text
-    ```bash
+```
 ---
 
 ### **6. Allocate and Associate Elastic IP (optional, for static IP)**
-    ```bash
+```bash
     aws ec2 allocate-address
     aws ec2 associate-address --instance-id i-085ae187d97a893f2 --allocation-id eipalloc-0e7cbc1babeffec97
-    ```
+```
 
-    ```json
+```json
     {
         "AllocationId": "eipalloc-0e7cbc1babeffec97",
         "PublicIpv4Pool": "amazon",
@@ -250,29 +250,29 @@ aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type
         "Domain": "vpc",
         "PublicIp": "52.74.52.230"
     }
-    ```
+```
 
-    ```json
+```json
     {
         "AssociationId": "eipassoc-08a6d4e387dee5aa9"
     }
-    ```
+```
 ---
 
 ### **8. SSH into your instance**
-    ```bash
+```bash
     ssh -i ~/.ssh/aws-interopera.awskeypair.pem ec2-user@52.74.52.230
-    ```
+```
 
-    ```bash
-        uname -a
-    ```
+```bash
+    uname -a
+```
     Linux ip-172-31-44-94.ap-southeast-1.compute.internal 6.1.132-147.221.amzn2023.aarch64 #1 SMP Tue Apr  8 13:14:35 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
 ---
 
 ### **9. Install Docker in instance**
 
-    ```bash
+```bash
     sudo dnf update -y
     sudo dnf install -y docker
     sudo systemctl enable docker
@@ -280,25 +280,25 @@ aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type
     sudo usermod -aG docker ec2-user
     newgrp docker
     docker info
-    ```
+```
 
 ### **10. Give name to this instance**
-    ```bash
+```bash
     aws ec2 create-tags \
     --resources i-085ae187d97a893f2 \
     --tags Key=Name,Value=aws-interopera-devops \
     --region ap-southeast-1
-    ```
+```
 
-    ```bash
+```bash
     aws ec2 describe-instances \
     --instance-ids i-085ae187d97a893f2 \
     --query "Reservations[*].Instances[*].Tags" \
     --region ap-southeast-1 \
     --output table
-    ```
+```
 ### 11. Create application instance
-    ```bash
+```bash
     aws ec2 run-instances \
     --image-id ami-0d47fa2c431cf6d45 \
     --count 1 \
@@ -307,7 +307,7 @@ aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type
     --security-groups aws-interopera-secgroup \
     --region ap-southeast-1 \
     --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=aws-interopera01}]'
-    ```
+```
 #### Output:
     ```json
     {
