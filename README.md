@@ -470,15 +470,10 @@ aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type
     --output table
 ```
 
-#### Get private IP
+#### Get private IP Init Swarm manager on instance00
 ```bash
 ip addr show 
 docker swarm init --advertise-addr 172.31.44.94 # this ip from ip addre show
-
-
-```bash
-docker swarm join --token SWMTKN-1-3jivpv8ixuuk6wu5m4nwduow107p8aa38ryzwinreuetmheytr-1evoaxj584k2v38apv6b0miyb 172.31.44.94:2377
-```
 
 ```bash
 aws ec2 authorize-security-group-ingress \
@@ -487,6 +482,12 @@ aws ec2 authorize-security-group-ingress \
   --port 2377 \
   --cidr 0.0.0.0/0 \
   --region ap-southeast-1
+```
+
+#### Get private IP Join Swarm on instance01
+
+```bash
+docker swarm join --token SWMTKN-1-3jivpv8ixuuk6wu5m4nwduow107p8aa38ryzwinreuetmheytr-1evoaxj584k2v38apv6b0miyb 172.31.44.94:2377
 ```
 
 ```json
