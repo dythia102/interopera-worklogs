@@ -20,15 +20,21 @@ launch and configure an **EC2 instance using AWS CLI**
 ---
 
 ### **1. Choose an AMI**
-Use Amazon Linux 2023 or Ubuntu 22.04:
+Use Amazon Linux 2023 with ARM Arch, for price peformance:
 
 ```bash
-aws ec2 describe-images --owners amazon --filters "Name=name,Values=al2023-ami-*" --query 'Images[*].[ImageId,Name]' --output table
+aws ec2 describe-images \
+  --owners amazon \
+  --filters "Name=name,Values=al2023-ami-*" \
+            "Name=architecture,Values=arm64" \
+            "Name=virtualization-type,Values=hvm" \
+            "Name=root-device-type,Values=ebs" \
+  --region ap-southeast-1 \
+  --query "sort_by(Images, &CreationDate)[::-1].[ImageId, Name, CreationDate]" \
+  --output table
 ```
 
-Pick an `ImageId` like `ami-0abcdef1234567890`
-
----
+ami-0d47fa2c431cf6d45|  al2023-ami-ecs-hvm-2023.0.20250430-kernel-6.1-arm64     |  2025-04-30T21:27:09.000Z  |
 
 ### **2. Create a Key Pair (for SSH access)**
 ```bash
