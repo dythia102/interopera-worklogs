@@ -84,14 +84,139 @@ aws ec2 authorize-security-group-ingress --group-name aws-interopera-secgroup --
 ```
 
 ---
-# TODO
 ### **5. Launch the EC2 Instance**
 ```bash
-aws ec2 run-instances --image-id ec2 run-instances --count 1 --instance-type t4g.micro --key-name aws-interopera --security-groups aws-interopera-secgroup --region ap-southeast-1
+aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type t4g.micro --key-name aws-interopera --security-groups aws-interopera-secgroup --region ap-southeast-1
 ```
 
-Output will show `InstanceId`, e.g., `i-0abcd12345efgh678`.
-
+#### OUTPUT
+```json
+{
+    "ReservationId": "r-09e6595b30c8da164",
+    "OwnerId": "094604222284",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "3c8474b6-dbaa-450a-a61d-929b0692c7ae",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2025-05-05T20:19:20+00:00",
+                        "AttachmentId": "eni-attach-0ab0c91c8a8e0d4f2",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-0226dc0fa229f050a",
+                            "GroupName": "aws-interopera-secgroup"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "06:e2:75:77:b2:27",
+                    "NetworkInterfaceId": "eni-012749e75ce295830",
+                    "OwnerId": "094604222284",
+                    "PrivateDnsName": "ip-172-31-44-94.ap-southeast-1.compute.internal",
+                    "PrivateIpAddress": "172.31.44.94",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateDnsName": "ip-172-31-44-94.ap-southeast-1.compute.internal",
+                            "PrivateIpAddress": "172.31.44.94"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0ce769afbe5db3ee7",
+                    "VpcId": "vpc-08ff9d8e3a93ce8a0",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-0226dc0fa229f050a",
+                    "GroupName": "aws-interopera-secgroup"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-085ae187d97a893f2",
+            "ImageId": "ami-0d47fa2c431cf6d45",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-172-31-44-94.ap-southeast-1.compute.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "aws-interopera",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.micro",
+            "LaunchTime": "2025-05-05T20:19:20+00:00",
+            "Placement": {
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "ap-southeast-1b"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0ce769afbe5db3ee7",
+            "VpcId": "vpc-08ff9d8e3a93ce8a0",
+            "PrivateIpAddress": "172.31.44.94"
+        }
+    ]
+}
+```
 ---
 
 ### **6. Allocate and Associate Elastic IP (optional, for static IP)**
