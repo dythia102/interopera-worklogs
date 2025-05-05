@@ -41,8 +41,8 @@ Use Amazon Linux 2023 with ARM Arch, for price peformance:
 
 ### **2. Create a Key Pair (for SSH access)**
 ```bash
-aws ec2 create-key-pair --key-name my-key --query 'KeyMaterial' --output text > my-key.pem
-chmod 400 my-key.pem
+aws ec2 create-key-pair --key-name aws-interopera --query 'KeyMaterial' --output text > aws-interopera.awskeypair.pem
+chmod 400 aws-interopera.awskeypair.pem
 ```
 #### Verification:
   ```bash
@@ -77,7 +77,7 @@ aws ec2 authorize-security-group-ingress --group-name aws-interopera-secgroup --
 #### Verification:
 ```bash
   aws ec2 describe-security-groups \
-    --group-names my-sg \
+    --group-names aws-interopera-secgroup \
     --region ap-southeast-1 \
     --query "SecurityGroups[*].IpPermissions[*].[IpProtocol,FromPort,ToPort,IpRanges[*].CidrIp]" \
     --output table
@@ -88,11 +88,13 @@ aws ec2 authorize-security-group-ingress --group-name aws-interopera-secgroup --
 ### **5. Launch the EC2 Instance**
 ```bash
 aws ec2 run-instances \
-  --image-id ami-0abcdef1234567890 \ # Replace with real AMI ID
+  --image-id ami-0d47fa2c431cf6d45 \  
   --count 1 \
-  --instance-type t2.micro \
-  --key-name my-key \
-  --security-groups my-sg
+  --instance-type t4g.micro \
+  --key-name aws-interopera \
+  --security-groups aws-interopera-secgroup \
+  --region ap-southeast-1
+
 ```
 
 Output will show `InstanceId`, e.g., `i-0abcd12345efgh678`.
