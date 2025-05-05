@@ -265,8 +265,8 @@ aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type
     ssh -i aws-interopera.awskeypair.pem ec2-user@13.212.186.153
     ```
 
-
-
+    ```bash
+        uname -a
+    ```
+    Linux ip-172-31-44-94.ap-southeast-1.compute.internal 6.1.132-147.221.amzn2023.aarch64 #1 SMP Tue Apr  8 13:14:35 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
 ---
-
-Let me know if you want a **bash script** version of this setup.
