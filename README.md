@@ -455,3 +455,17 @@ aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type
     --region ap-southeast-1
 ```
 
+```bash
+    aws ec2 create-tags \
+    --resources i-07ee93cab00f1a500 \
+    --tags Key=Name,Value=aws-interopera-apps \
+    --region ap-southeast-1
+```
+
+```bash
+    aws ec2 describe-instances \
+    --instance-ids i-07ee93cab00f1a500 \
+    --query "Reservations[*].Instances[*].Tags" \
+    --region ap-southeast-1 \
+    --output table
+```
