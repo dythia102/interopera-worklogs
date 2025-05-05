@@ -469,3 +469,41 @@ aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type
     --region ap-southeast-1 \
     --output table
 ```
+
+#### Get private IP
+```bash
+ip addr show 
+docker swarm init --advertise-addr 172.31.44.94 # this ip from ip addre show
+
+
+```bash
+docker swarm join --token SWMTKN-1-3jivpv8ixuuk6wu5m4nwduow107p8aa38ryzwinreuetmheytr-1evoaxj584k2v38apv6b0miyb 172.31.44.94:2377
+```
+
+```bash
+aws ec2 authorize-security-group-ingress \
+  --group-name aws-interopera-secgroup \
+  --protocol tcp \
+  --port 2377 \
+  --cidr 0.0.0.0/0 \
+  --region ap-southeast-1
+```
+
+```json
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-01048de1cc0940411",
+            "GroupId": "sg-0226dc0fa229f050a",
+            "GroupOwnerId": "094604222284",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 2377,
+            "ToPort": 2377,
+            "CidrIpv4": "0.0.0.0/0",
+            "SecurityGroupRuleArn": "arn:aws:ec2:ap-southeast-1:094604222284:security-group-rule/sgr-01048de1cc0940411"
+        }
+    ]
+}
+```
