@@ -22,21 +22,21 @@ launch and configure an **EC2 instance using AWS CLI**
 ### **1. Choose an AMI**
 Use Amazon Linux 2023 with ARM Arch, for price peformance:
 
-```bash
-aws ec2 describe-images \
-  --owners amazon \
-  --filters "Name=name,Values=al2023-ami-*" \
-            "Name=architecture,Values=arm64" \
-            "Name=virtualization-type,Values=hvm" \
-            "Name=root-device-type,Values=ebs" \
-  --region ap-southeast-1 \
-  --query "sort_by(Images, &CreationDate)[::-1].[ImageId, Name, CreationDate]" \
-  --output table
-```
-will using this image
-- ami-0d47fa2c431cf6d45
-- al2023-ami-ecs-hvm-2023.0.20250430-kernel-6.1-arm64
-- 2025-04-30T21:27:09.000Z
+  ```bash
+  aws ec2 describe-images \
+    --owners amazon \
+    --filters "Name=name,Values=al2023-ami-*" \
+              "Name=architecture,Values=arm64" \
+              "Name=virtualization-type,Values=hvm" \
+              "Name=root-device-type,Values=ebs" \
+    --region ap-southeast-1 \
+    --query "sort_by(Images, &CreationDate)[::-1].[ImageId, Name, CreationDate]" \
+    --output table
+  ```
+  will using this image
+  - ami-0d47fa2c431cf6d45
+  - al2023-ami-ecs-hvm-2023.0.20250430-kernel-6.1-arm64
+  - 2025-04-30T21:27:09.000Z
 ---
 
 ### **2. Create a Key Pair (for SSH access)**
@@ -45,16 +45,23 @@ aws ec2 create-key-pair --key-name my-key --query 'KeyMaterial' --output text > 
 chmod 400 my-key.pem
 ```
 #### Verification:
-```bash
-aws ec2 describe-key-pairs --query "KeyPairs[*].KeyName" --output table
-```
+  ```bash
+  aws ec2 describe-key-pairs --query "KeyPairs[*].KeyName" --output table
+  ```
 ---
 
 ### **3. Create a Security Group**
-```bash
-aws ec2 create-security-group --group-name aws-interopera-secgroup --description "Allow SSH and web traffic"
-```
-
+  ```bash
+  aws ec2 create-security-group --group-name aws-interopera-secgroup --description "Allow SSH and web traffic"
+  ```
+#### Verification:
+  ```bash
+  aws ec2 describe-security-groups \
+  --region ap-southeast-1 \
+  --query "SecurityGroups[*].[GroupName, GroupId, Description]" \
+  --output table
+  ```
+---
 ### **4. Allow Ports (SSH, HTTP, HTTPS, custom)**
 ```bash
 aws ec2 authorize-security-group-ingress --group-name aws-interopera-secgroup --protocol tcp --port 22 --cidr 0.0.0.0/0
