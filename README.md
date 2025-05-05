@@ -217,30 +217,55 @@ aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type
     ]
 }
 ```
+
+#### Verification:
+    ```bash
+    aws ec2 describe-instances \
+    --region ap-southeast-1 \
+    --query "Reservations[*].Instances[*].[InstanceId, State.Name, PublicIpAddress]" \
+    --output table
+    ```
+
+#### Public IP:
+    ```bash
+    aws ec2 describe-instances \
+    --instance-ids i-085ae187d97a893f2 \
+    --region ap-southeast-1 \
+    --query "Reservations[*].Instances[*].PublicIpAddress" \
+    --output text
+    ```bash
+
 ---
 
 ### **6. Allocate and Associate Elastic IP (optional, for static IP)**
-```bash
-aws ec2 allocate-address
-aws ec2 associate-address --instance-id i-0abcd12345efgh678 --allocation-id eipalloc-xxxxxxxx
-```
+    ```bash
+    aws ec2 allocate-address
+    aws ec2 associate-address --instance-id i-085ae187d97a893f2 --allocation-id eipalloc-0e7cbc1babeffec97
+    ```
 
----
+    ```json
+    {
+        "AllocationId": "eipalloc-0e7cbc1babeffec97",
+        "PublicIpv4Pool": "amazon",
+        "NetworkBorderGroup": "ap-southeast-1",
+        "Domain": "vpc",
+        "PublicIp": "52.74.52.230"
+    }
+    ```
 
-### **7. Get Public IP**
-```bash
-aws ec2 describe-instances --instance-ids i-0abcd12345efgh678 \
-  --query "Reservations[*].Instances[*].PublicIpAddress" --output text
-```
-
+    ```json
+    {
+        "AssociationId": "eipassoc-08a6d4e387dee5aa9"
+    }
+    ```
 ---
 
 ### **8. SSH into your instance**
-```bash
-ssh -i my-key.pem ec2-user@<PUBLIC-IP>   # Amazon Linux
-# or
-ssh -i my-key.pem ubuntu@<PUBLIC-IP>     # Ubuntu
-```
+    ```bash
+    ssh -i aws-interopera.awskeypair.pem ec2-user@13.212.186.153
+    ```
+
+
 
 ---
 
