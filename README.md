@@ -87,14 +87,7 @@ aws ec2 authorize-security-group-ingress --group-name aws-interopera-secgroup --
 # TODO
 ### **5. Launch the EC2 Instance**
 ```bash
-aws ec2 run-instances \
-  --image-id ami-0d47fa2c431cf6d45 \  
-  --count 1 \
-  --instance-type t4g.micro \
-  --key-name aws-interopera \
-  --security-groups aws-interopera-secgroup \
-  --region ap-southeast-1
-
+aws ec2 run-instances --image-id ec2 run-instances --count 1 --instance-type t4g.micro --key-name aws-interopera --security-groups aws-interopera-secgroup --region ap-southeast-1
 ```
 
 Output will show `InstanceId`, e.g., `i-0abcd12345efgh678`.
