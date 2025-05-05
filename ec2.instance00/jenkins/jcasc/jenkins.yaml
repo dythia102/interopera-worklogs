@@ -1,0 +1,24 @@
+jenkins:
+  systemMessage: "Jenkins on EC2 with Docker + GitHub CI/CD"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: ${JENKINS_ADMIN_ID}
+          password: ${JENKINS_ADMIN_PASSWORD}
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+unclassified:
+  location:
+    url: http://52.74.52.230:8080/
+  gitHubPluginConfig:
+    configs:
+      - name: "GitHub"
+        apiUrl: "https://api.github.com"
+        manageHooks: true
+tool:
+  git:
+    installations:
+      - name: "Default"
+        home: "git"
