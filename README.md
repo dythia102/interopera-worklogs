@@ -309,7 +309,7 @@ aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type
     --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=aws-interopera01}]'
 ```
 #### Output:
-    ```json
+```json
     {
         "ReservationId": "r-048a30d0ca11dfffe",
         "OwnerId": "094604222284",
@@ -441,23 +441,17 @@ aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type
             }
         ]
     }
-    ``` 
+``` 
 
 #### assign EIP
-    ```bash
+```bash
     aws ec2 describe-addresses   --region ap-southeast-1   --query "Addresses[*].[PublicIp, AllocationId, InstanceId, AssociationId]"   --output table
-    ```
+```
 
-    ```bash
+```bash
     aws ec2 associate-address \
     --instance-id i-07ee93cab00f1a500 \
     --allocation-id eipalloc-088b8509f327eecf2 \
     --region ap-southeast-1
-    ```
+```
 
------------------------------------------------------------------------------------------------------
-|                                         DescribeAddresses                                         |
-+--------------+------------------------------+----------------------+------------------------------+
-|  52.74.52.230|  eipalloc-0e7cbc1babeffec97  |  i-085ae187d97a893f2 |  eipassoc-08a6d4e387dee5aa9  |
-|  52.76.218.70|  eipalloc-088b8509f327eecf2  |  i-07ee93cab00f1a500 |  eipassoc-06fa4938102579170  |
-+--------------+------------------------------+----------------------+------------------------------+
