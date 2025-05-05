@@ -33,8 +33,11 @@ aws ec2 describe-images \
   --query "sort_by(Images, &CreationDate)[::-1].[ImageId, Name, CreationDate]" \
   --output table
 ```
-
-ami-0d47fa2c431cf6d45|  al2023-ami-ecs-hvm-2023.0.20250430-kernel-6.1-arm64     |  2025-04-30T21:27:09.000Z  |
+will using this image
+- ami-0d47fa2c431cf6d45
+- al2023-ami-ecs-hvm-2023.0.20250430-kernel-6.1-arm64
+- 2025-04-30T21:27:09.000Z
+---
 
 ### **2. Create a Key Pair (for SSH access)**
 ```bash
@@ -45,7 +48,6 @@ chmod 400 my-key.pem
 ```bash
 aws ec2 describe-key-pairs --query "KeyPairs[*].KeyName" --output table
 ```
-
 ---
 
 ### **3. Create a Security Group**
@@ -65,7 +67,7 @@ aws ec2 authorize-security-group-ingress --group-name aws-interopera-secgroup --
 
 aws ec2 authorize-security-group-ingress --group-name aws-interopera-secgroup --protocol tcp --port 3000 --cidr 0.0.0.0/0
 ```
-#### Check Ingress Rules
+#### Verification:
 ```bash
   aws ec2 describe-security-groups \
     --group-names my-sg \
