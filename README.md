@@ -270,3 +270,15 @@ aws ec2 run-instances --image-id ami-0d47fa2c431cf6d45 --count 1 --instance-type
     ```
     Linux ip-172-31-44-94.ap-southeast-1.compute.internal 6.1.132-147.221.amzn2023.aarch64 #1 SMP Tue Apr  8 13:14:35 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
 ---
+
+### **9. Install Docker in instance**
+
+    ```bash
+    sudo dnf update -y
+    sudo dnf install -y docker
+    sudo systemctl enable docker
+    sudo systemctl start docker
+    sudo usermod -aG docker ec2-user
+    newgrp docker
+    docker info
+    ```
