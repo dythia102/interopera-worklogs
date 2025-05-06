@@ -1,6 +1,0 @@
-configuration-as-code
-job-dsl
-git
-github
-docker-workflow
-ssh-credentials
