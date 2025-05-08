@@ -50,7 +50,9 @@ doctor needing to decide on a treatment plan. A RAG system could:
 
 ### After research and discussing about Vector Database heres my thought:
   ```
-    vector database, in traditional database, we retrive data based on keys, but in vector database we retrieve data based on relevance, similiarity or context
+    vector database, in traditional database,
+    we retrive data based on keys,
+    but in vector database we retrieve data based on relevance, similiarity or context
   ```
 
 ## Summary of my discussion with Grok
