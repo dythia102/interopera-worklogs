@@ -1,5 +1,5 @@
-### After days of research and discussing about RAG with Grok, this are my though:
-  ```
+### After days of research and discussing about RAG with Grok, this are my tought:
+  ```Grok Prompt
    My ideas about RAG is, about utilizing ai for specific purpose or context,
    or utilize ai to mimic a specific expertise or persona.
    In technical, its about how we ask/prompt ai, 
@@ -43,10 +43,10 @@ doctor needing to decide on a treatment plan. A RAG system could:
 - Generate a concise report with treatment options, risks, and evidence-based recommendations.
 - Format the output as a decision matrix to help you choose the best course of action quickly.
   
-### After exploring and discussing about RAG potensial uses and its potensial :
-'''
+### After exploring and discussing about RAG potential:
+```Grok Prompt
    Create Apps for personal finance, it gather data specialize in indonesia data, it helps to manage portofolio, can analyze stock, indexs, funds bonds, insurance, loans, health, financing, crypto, it can analyze your porto, and health, spending. 
-'''
+```
 
 ### How RAG Can Power a Personal Finance App for Indonesia
 RAG combines retrieval of relevant, up-to-date data with generative AI to provide accurate, contextually relevant responses. For a personal finance app tailored to Indonesia, RAG can:
