@@ -41,19 +41,19 @@ doctor needing to decide on a treatment plan. A RAG system could:
 - Generate a concise report with treatment options, risks, and evidence-based recommendations.
 - Format the output as a decision matrix to help you choose the best course of action quickly.
   
-### After exploring and discussing about RAG potential:
+### After exploring and several discussing about RAG potential, heres myu Idea:
 ```
    Create Apps for personal finance, it gather data specialize in indonesia data,
    it helps to manage portofolio, can analyze stock, indexs, funds bonds, insurance, loans, health, financing, crypto,
    it can analyze your porto, and health, spending. 
 ```
 
-### After research and discussing Vector Database heres my thought
+### After research and discussing about Vector Database heres my thought:
   ```
     vector database, in traditional database, we retrive data based on keys, but in vector database we retrieve data based on relevance, similiarity or context
   ```
 
-### Summary of my discussion with Grok
+## Summary of my discussion with Grok
 ### How RAG Can Power a Personal Finance App for Indonesia
 RAG combines retrieval of relevant, up-to-date data with generative AI to provide accurate, contextually relevant responses. For a personal finance app tailored to Indonesia, RAG can:
 1. **Gather and Analyze Indonesia-Specific Financial Data**:
