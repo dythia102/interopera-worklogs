@@ -41,7 +41,7 @@ doctor needing to decide on a treatment plan. A RAG system could:
 - Generate a concise report with treatment options, risks, and evidence-based recommendations.
 - Format the output as a decision matrix to help you choose the best course of action quickly.
   
-### After exploring and several discussing about RAG potential, heres myu Idea:
+### After exploring and several discussing about RAG potential, heres my idea:
 ```
    Create Apps for personal finance, it gather data specialize in indonesia data,
    it helps to manage portofolio, can analyze stock, indexs, funds bonds, insurance, loans, health, financing, crypto,
