@@ -1,5 +1,5 @@
 ### After days of research and discussing about RAG with Grok, this are my though:
-'''txt
+'''bash
    My ideas about RAG is, about utilizing ai for specific purpose or context,
    or utilize ai to mimic a specific expertise or persona.
    In technical, its about how we ask/prompt ai, 
