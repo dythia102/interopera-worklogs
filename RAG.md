@@ -1,5 +1,5 @@
 ### After days of research and discussing about RAG with Grok, this are my though:
-'''bash
+  ```
    My ideas about RAG is, about utilizing ai for specific purpose or context,
    or utilize ai to mimic a specific expertise or persona.
    In technical, its about how we ask/prompt ai, 
@@ -8,7 +8,8 @@
    to help us summarize a very large data,
    filter its relevancy on our question/problem,
    therefore give us wisdom to and make better faster decission.
-'''
+  ```
+
 
 Lets try break it down:
 1. Utilizing AI for Specific Purpose or Context
